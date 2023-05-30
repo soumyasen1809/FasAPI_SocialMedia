@@ -1,0 +1,22 @@
+name: Build and Deploy Code
+
+# What triggers our code to run? Either a push or pull request
+# On which branch will this run? Main branch for me
+# Since we have only 1 branch (main), we can skip the push:... part
+on: [push, pull_request]
+  push:
+    branches: ["main"]
+  pull_request:
+    branches:
+      - "main"
+
+# Next we need to create a job
+# Specify which OS we want to run it on
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pulling get repo
+        uses: actions/checkout@v2
+      - name: Random command on the machine
+        run: echo "Hello World... This is a FasAPI example"
