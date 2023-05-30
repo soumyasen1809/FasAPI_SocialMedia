@@ -20,8 +20,8 @@ def client():
 # Create a new test user here
 @pytest.fixture
 def test_user(client):
-    user_data = {"email": "LoginTest@email.com",
-                 "password": "pass123", "name": "Login Test"}
+    user_data = {"email": "LoginTest6@email.com",
+                 "password": "pass123", "name": "Login Test 6"}
     res = client.post("/users", json=user_data)
 
     assert res.status_code == 201
@@ -57,3 +57,12 @@ def test_login_user(client, test_user):
     assert login_res.token_type == "bearer"
 
     assert res.status_code == 200
+
+
+
+# def test_incorrect_login(client, test_user):
+#     res = client.post("/login", json={"email": "wrongemail@email.com", "password": "Wrong password"})
+
+#     assert res.status_code == 403
+#     assert res.json().get('detail') == f"Invalid credentials for the email wrongemail@email.com"
+
