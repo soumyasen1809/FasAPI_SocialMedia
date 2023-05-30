@@ -8,5 +8,11 @@ jobs:
     steps:
       - name: Pulling get repo
         uses: actions/checkout@v2
-      - name: Random command on the machine
-        run: echo "Hello World... This is a FasAPI example"
+      - name: Install python version 3.9
+        run:  actions/setup-python@v2
+        with:
+          python-version: "3.9"
+      - name: Update pip
+        run:  python -m pip install --upgrade pip
+      - name: Install all the dependencies from requirements.txt file
+        run:  pip install -r requirements.txt
